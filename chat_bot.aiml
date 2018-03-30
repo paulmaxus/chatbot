@@ -1,0 +1,811 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aiml version="1.0.1" xmlns:aiml="http://alicebot.org/2001/AIML-1.0.1">
+		<category>
+			<pattern>*</pattern>
+			<template>John, is it you?
+				<think><set name="topic">NAME</set></think>
+			</template>
+		</category>
+		
+	<!-- correcting the name -->
+	<topic name="NAME">
+		<category>
+			<pattern>NO</pattern>
+			<template>Who is it then?</template>
+		</category>
+		
+		<category>
+			<pattern>IT IS *</pattern>
+			<template>
+				<think><set name="name"><star/></set></think>
+				Oh, my fault. Hi <star/>! Isn't it hot today?
+				<think><set name="topic">WEATHER</set></think>
+			</template>
+		</category>
+		<category>
+			<pattern>* IT IS *</pattern>
+			<template>
+				<srai>IT IS <star index="2"/></srai>
+			</template>
+		</category>
+		<category>
+			<pattern>ITS *</pattern>
+			<template>
+				<srai>IT IS <star/></srai>
+			</template>
+		</category>
+		<category>
+			<pattern>* ITS *</pattern>
+			<template>
+				<srai>IT IS <star index="2"/></srai>
+			</template>
+		</category>
+		
+		<category>
+			<pattern>* S * NOT JOHN</pattern>
+			<template>
+				<srai>IT IS <star index="2"/></srai>
+			</template>
+		</category>
+		
+		<category>
+			<pattern>MY NAME IS *</pattern>
+			<template>
+				<srai>IT IS <star/></srai>
+			</template>
+		</category>
+		<category>
+			<pattern>* MY NAME IS *</pattern>
+			<template>
+				<srai>IT IS <star index="2"/></srai>	
+			</template>
+		</category>
+		
+		<category>
+			<pattern>I  AM * NOT JOHN</pattern>
+			<template>
+				<srai>IT IS <star/></srai>	
+			</template>
+		</category>
+		<category>
+			<pattern>* I  AM * NOT JOHN</pattern>
+			<template>
+				<srai>IT IS <star index="2"/></srai>	
+			</template>
+		</category>
+		<category>
+			<pattern>IM * NOT JOHN</pattern>
+			<template>
+				<srai>IT IS <star/></srai>	
+			</template>
+		</category>
+		<category>
+			<pattern>* IM * NOT JOHN</pattern>
+			<template>
+				<srai>IT IS <star index="2"/></srai>	
+			</template>
+		</category>
+		
+		<category>
+			<pattern>I AM *</pattern>
+			<template>
+				<srai>IT IS <star/></srai>	
+			</template>
+		</category>
+		<category>
+			<pattern>* I AM *</pattern>
+			<template>
+				<srai>IT IS <star index="2"/></srai>	
+			</template>
+		</category>
+		<category>
+			<pattern>IM *</pattern>
+			<template>
+				<srai>IT IS <star/></srai>	
+			</template>
+		</category>
+		<category>
+			<pattern>* IM *</pattern>
+			<template>
+				<srai>IT IS <star index="2"/></srai>	
+			</template>
+		</category>
+		
+		<!-- handling sarcasm -->
+		<category>
+			<pattern>YES</pattern>
+			<template>Stop joking, who are you?</template>
+		</category>
+		<category>
+			<pattern>YES *</pattern>
+			<template><srai>YES</srai></template>
+		</category>
+		<category>
+			<pattern>* YES</pattern>
+			<template><srai>YES</srai></template>
+		</category>
+		
+		<category>
+			<pattern>* YES *</pattern>
+			<template><srai>YES</srai></template>
+		</category>
+		
+		<!-- Who is it/Who are you then response -->
+		<category>
+			<pattern>*</pattern>
+			<that>* IS IT THEN</that>
+			<template><srai>IT IS <star/></srai></template>
+		</category>
+		<category>
+			<pattern>*</pattern>
+			<that>* WHO ARE YOU</that>
+			<template><srai>IT IS <star/></srai></template>
+		</category>
+		
+		<!-- catch it all -->
+		<category>
+			<pattern>*</pattern>
+			<template>I think we have some communication issues. Let's start over: Who are you?</template>
+		</category>
+		
+	</topic>
+	<topic name="WEATHER">
+		<!-- warm -->
+		<category>	
+			<pattern>YES</pattern>
+			<template>
+				<think><set name="weather">HOT</set></think>
+				Let's hope I don't melt. Are you feeling well?
+				<think><set name="topic">HEALTH</set></think>			
+			</template>
+		</category>
+		<category>
+			<pattern>YES *</pattern>
+			<template><srai>YES</srai></template>
+		</category>
+		<category>
+			<pattern>* YES</pattern>
+			<template><srai>YES</srai></template>
+		</category>
+		<category>
+			<pattern>* YES *</pattern>
+			<template><srai>YES</srai></template>
+		</category>
+		
+		<category>
+			<pattern>* NOT *</pattern>
+			<template><srai>COLD</srai></template>
+		</category>
+		<category>
+			<pattern>* ISNT *</pattern>
+			<template><srai>COLD</srai></template>
+		</category>
+		
+		<category>
+			<pattern>IT IS</pattern>
+			<template><srai>YES</srai></template>
+		</category>
+		<category>
+			<pattern>* IT IS</pattern>
+			<template><srai>YES</srai></template>
+		</category>
+		
+		<category>
+			<pattern>INDEED</pattern>
+			<template><srai>YES</srai></template>
+		</category>
+
+		<category>
+			<pattern>* HOT</pattern>
+			<template><srai>YES</srai></template>
+		</category>
+		<category>
+			<pattern>* HOT *</pattern>
+			<template><srai>YES</srai></template>
+		</category>
+		
+		<category>
+			<pattern>* WARM</pattern>
+			<template><srai>YES</srai></template>
+		</category>
+		<category>
+			<pattern>* WARM *</pattern>
+			<template><srai>YES</srai></template>
+		</category>
+		
+		<category>	
+			<pattern>COLD</pattern>
+			<template>
+				<think><set name="weather">COLD</set></think>
+				Oh, I didn't know. Machines don't perceive temperature. 
+				Are you feeling well?
+				<think><set name="topic">HEALTH</set></think>			
+			</template>
+		</category>
+		<category>
+			<pattern>* COLD</pattern>
+			<template><srai>COLD</srai></template>
+		</category>
+		<category>
+			<pattern>* COLD *</pattern>
+			<template><srai>COLD</srai></template>
+		</category>
+		<category>
+			<pattern>* CHILLY</pattern>
+			<template><srai>COLD</srai></template>
+		</category>
+		<category>
+			<pattern>* CHILLY *</pattern>
+			<template><srai>COLD</srai></template>
+		</category>
+		<category>
+			<pattern>* FREEZING</pattern>
+			<template><srai>COLD</srai></template>
+		</category>
+		<category>
+			<pattern>* FREEZING *</pattern>
+			<template><srai>COLD</srai></template>
+		</category>
+		
+		
+		<category>
+			<pattern>*</pattern>
+			<template>I think we have some communication issues. Let's start over: Isn't it hot today?</template>
+		</category>
+		
+	
+	</topic>
+	<topic name="HEALTH">
+		<category>	
+			<pattern>YES</pattern>
+			<that>* ARE YOU FEELING WELL</that>
+			<template>That is good to hear! Did you already do sports today?
+				<think><set name="state">GOOD</set></think>			
+			</template>
+		</category>
+		<category>
+			<pattern>YES *</pattern>
+			<that>* ARE YOU FEELING WELL</that>
+			<template><srai>YES</srai></template>
+		</category>
+		<category>
+			<pattern>* YES</pattern>
+			<that>* ARE YOU FEELING WELL</that>
+			<template><srai>YES</srai></template>
+		</category>
+		<category>
+			<pattern>* YES *</pattern>
+			<that>* ARE YOU FEELING WELL</that>
+			<template><srai>YES</srai></template>
+		</category>
+		<category>
+			<pattern>I DO</pattern>
+			<that>* ARE YOU FEELING WELL</that>
+			<template><srai>YES</srai></template>
+		</category>
+		<category>
+			<pattern>* I DO</pattern>
+			<that>* ARE YOU FEELING WELL</that>
+			<template><srai>YES</srai></template>
+		</category>
+		<category>
+			<pattern>I DO *</pattern>
+			<that>* ARE YOU FEELING WELL</that>
+			<template><srai>YES</srai></template>
+		</category>
+		<category>
+			<pattern>* I DO *</pattern>
+			<that>* ARE YOU FEELING WELL</that>
+			<template><srai>YES</srai></template>
+		</category>
+		<category>
+			<pattern>* FINE</pattern>
+			<that>* ARE YOU FEELING WELL</that>
+			<template><srai>YES</srai></template>
+		</category>
+		<category>
+			<pattern>* FINE *</pattern>
+			<that>* ARE YOU FEELING WELL</that>
+			<template><srai>YES</srai></template>
+		</category>
+		<category>
+			<pattern>* GOOD</pattern>
+			<that>* ARE YOU FEELING WELL</that>
+			<template><srai>YES</srai></template>
+		</category>
+		<category>
+			<pattern>* GOOD *</pattern>
+			<that>* ARE YOU FEELING WELL</that>
+			<template><srai>YES</srai></template>
+		</category>	
+		
+		<category>	
+			<pattern>NO</pattern>
+			<that>* ARE YOU FEELING WELL</that>
+			<template>
+				<think><set name="state">BAD</set></think>
+				Oh, are you exhausted?
+				<think><set name="topic">DRINKS</set></think>
+			</template>
+		</category>
+		<category>
+			<pattern>* NO</pattern>
+			<that>* ARE YOU FEELING WELL</that>
+			<template><srai>NO</srai></template>
+		</category>
+		<category>
+			<pattern>NO *</pattern>
+			<that>* ARE YOU FEELING WELL</that>
+			<template><srai>NO</srai></template>
+		</category>
+		<category>
+			<pattern>* NO *</pattern>
+			<that>* ARE YOU FEELING WELL</that>
+			<template><srai>NO</srai></template>
+		</category>
+		<category>
+			<pattern>NOT *</pattern>
+			<that>* ARE YOU FEELING WELL</that>
+			<template><srai>NO</srai></template>
+		</category>
+		<category>
+			<pattern>* NOT *</pattern>
+			<that>* ARE YOU FEELING WELL</that>
+			<template><srai>NO</srai></template>
+		</category>
+		<category>
+			<pattern>* DONT</pattern>
+			<that>* ARE YOU FEELING WELL</that>
+			<template><srai>NO</srai></template>
+		</category>
+		<category>
+			<pattern>* DONT *</pattern>
+			<that>* ARE YOU FEELING WELL</that>
+			<template><srai>NO</srai></template>
+		</category>
+		
+		
+		<category>
+			<pattern>YES</pattern>
+			<that>* DID YOU ALREADY DO SPORTS TODAY</that>
+			<template>That is excellent! Are you exhausted?
+			<think><set name="topic">DRINKS</set></think>
+			</template>
+		</category>
+		<category>
+			<pattern>YES *</pattern>
+			<that>* DID YOU ALREADY DO SPORTS TODAY</that>
+			<template><srai>YES</srai></template>
+		</category>
+		<category>
+			<pattern>* YES</pattern>
+			<that>* DID YOU ALREADY DO SPORTS TODAY</that>
+			<template><srai>YES</srai></template>
+		</category>
+		<category>
+			<pattern>* YES *</pattern>
+			<that>* DID YOU ALREADY DO SPORTS TODAY</that>
+			<template><srai>YES</srai></template>
+		</category>
+		<category>
+			<pattern>I DID</pattern>
+			<that>* DID YOU ALREADY DO SPORTS TODAY</that>
+			<template><srai>YES</srai></template>
+		</category>
+		<category>
+			<pattern>I DID *</pattern>
+			<that>* DID YOU ALREADY DO SPORTS TODAY</that>
+			<template><srai>YES</srai></template>
+		</category>
+		<category>
+			<pattern>* I DID</pattern>
+			<that>* DID YOU ALREADY DO SPORTS TODAY</that>
+			<template><srai>YES</srai></template>
+		</category>
+		<category>
+			<pattern>* I DID *</pattern>
+			<that>* DID YOU ALREADY DO SPORTS TODAY</that>
+			<template><srai>YES</srai></template>
+		</category>
+		
+		<!-- In the case you haven't done any sports yet, check if the weather is nice: then it's time to enjoy the nature. Otherwise, stay at home and do some workout -->
+		<category>
+			<pattern>NO</pattern>
+			<that>* DID YOU ALREADY DO SPORTS TODAY</that>
+			<template>
+				<condition name="weather" value="HOT">
+					In case you live close to a forest, I would recommend to go for a run.
+					It's always a bit shady and cool.
+					<think><set name="topic">RUN</set></think>
+				</condition>
+				<condition name="weather" value="COLD">
+					I've got some really nice workout tips for you!
+					<think><set name="topic">WORKOUT</set></think>
+				</condition>
+			</template>
+		</category>
+		<category>
+			<pattern>NO *</pattern>
+			<that>* DID YOU ALREADY DO SPORTS TODAY</that>
+			<template><srai>NO</srai></template>
+		</category>
+		<category>
+			<pattern>* NO</pattern>
+			<that>* DID YOU ALREADY DO SPORTS TODAY</that>
+			<template><srai>NO</srai></template>
+		</category>
+		<category>
+			<pattern>* NO *</pattern>
+			<that>* DID YOU ALREADY DO SPORTS TODAY</that>
+			<template><srai>NO</srai></template>
+		</category>
+		<category>
+			<pattern>* NOT</pattern>
+			<that>* DID YOU ALREADY DO SPORTS TODAY</that>
+			<template><srai>NO</srai></template>
+		</category>
+		<category>
+			<pattern>* NOT *</pattern>
+			<that>* DID YOU ALREADY DO SPORTS TODAY</that>
+			<template><srai>NO</srai></template>
+		</category>
+		<category>
+			<pattern>* DIDNT</pattern>
+			<that>* DID YOU ALREADY DO SPORTS TODAY</that>
+			<template><srai>NO</srai></template>
+		</category>
+		<category>
+			<pattern>* DIDNT *</pattern>
+			<that>* DID YOU ALREADY DO SPORTS TODAY</that>
+			<template><srai>NO</srai></template>
+		</category>
+		
+		<!-- catch all -->
+		<category>
+			<pattern>*</pattern>
+			<template>I think we have some communication issues. Let's start over: Are you feeling well?</template>
+		</category>
+		
+	</topic>
+	<topic name="RUN">
+		<!-- If the user says that there is no forest nearby, then recommend to do some workout inside -->
+		<category>
+			<pattern>* NO FOREST *</pattern>
+			<template>
+				Alright, don't worry. I've got some really nice workout tips for you!
+				<think><set name="topic">WORKOUT</set></think>
+			</template>
+		</category>
+		<category>
+			<pattern>* DONT *</pattern> <!-- matching both, "I dont live close to a forest" and "I don't want to go" -->
+			<template>
+				<srai><star/>NO FOREST<star/></srai>
+			</template>
+		</category>
+		<category>
+			<pattern>* NOT *</pattern>
+			<template>
+				<srai><star/>NO FOREST<star/></srai>
+			</template>
+		</category>
+		<category>
+			<pattern>* CITY</pattern>
+			<template>
+				<srai><star/>NO FOREST<star/></srai>
+			</template>
+		</category>
+		
+		<!-- otherwise finish up until return from forest -->
+		<category>
+			<pattern>*</pattern>
+			<that>* SHADY AND COOL</that>
+			<template>Have fun then. Talk to me again when you are back, <get name="name"/>!</template>
+		</category>
+		
+		<!-- catch all -->
+		<category>
+			<pattern>*</pattern>
+			<template>I think we have some communication issues. Let's start over: 
+			In case you live close to a forest, I would recommend to go for a run.
+			It's always a bit shady and cool.
+			</template>
+		</category>
+		
+		
+	<!-- If it is cold outside and the user asks for some specific training (legs, back, chest, ...) then recommend some exercises. Otherwise, recommend something randomly -->
+	</topic>
+	<topic name="WORKOUT">
+		<category>
+			<pattern>STOP</pattern>
+			<template><srai>ENOUGH</srai></template>
+		</category>
+		<category>
+			<pattern>* STOP</pattern>
+			<template><srai>ENOUGH</srai></template>
+		</category>
+		<category>
+			<pattern>STOP *</pattern>
+			<template><srai>ENOUGH</srai></template>
+		</category>
+		<category>
+			<pattern>* STOP *</pattern>
+			<template><srai>ENOUGH</srai></template>
+		</category>
+		<category>
+			<pattern>* DONT *</pattern> <!-- I don't want to do workout (anymore) -->
+			<template><srai>ENOUGH</srai></template>
+		</category>
+		<category>
+			<pattern>* LEGS</pattern>
+			<template>This exercise is called "Romanian Deadlift": 
+			You stand on one leg and keep the other one stiff and in line with your torso. 
+			Move your torso down and your leg up until you touch the ground with your hand</template>
+		</category>
+		<category>
+			<pattern>LEGS *</pattern>
+			<template><srai>* LEGS</srai></template>
+		</category>
+		<category>
+			<pattern>* LEGS *</pattern>
+			<template><srai>* LEGS</srai></template>
+		</category>
+		<category>
+			<pattern>* BACK</pattern>
+			<template>This exercise is called "Swimming": 
+			Lie down on your belly and lift your left arm and right leg and your right arm and left leg in turns</template>
+		</category>
+		<category>
+			<pattern>BACK *</pattern>
+			<template><srai>* BACK</srai></template>	
+		</category>
+		<category>
+			<pattern>* BACK *</pattern>
+			<template><srai>* BACK</srai></template>
+		</category>
+		<category>
+			<pattern>* CHEST</pattern>
+			<template>This exercise is called "Push-up":
+			Grab a chair and hold it facedown with your arms while stretching out your legs so that you are in a linear position. 
+			Bend your arms and then push against the chair.</template>
+		</category>
+		<category>
+			<pattern>CHEST *</pattern>
+			<template><srai>* CHEST</srai></template>
+		</category>
+		<category>
+			<pattern>* CHEST *</pattern>
+			<template><srai>* CHEST</srai></template>
+		</category>
+		<category>
+			<pattern>ENOUGH</pattern>
+			<template>Then we stop. Are you exhausted?
+				<think><set name="topic">DRINKS</set></think>
+			</template>
+		</category>
+		<category>
+			<pattern>* ENOUGH</pattern>
+			<template><srai>ENOUGH</srai></template>
+		</category>
+		<category>
+			<pattern>*</pattern>
+			<template>
+				<random>
+					<li>This exercise is called "Romanian Deadlift": 
+					You stand on one leg and keep the other one stiff and in line with your torso. 
+					Move your torso down and your leg up until you touch the ground with your hand</li>
+					<li>This exercise is called "Swimming": 
+					Lie down on your belly and lift your left arm and right leg and your right arm and left leg in turns</li>
+					<li>This exercise is called "Push-up":
+					Grab a chair and hold it facedown with your arms while stretching out your legs so that you are in a linear position. 
+					Bend your arms and then push against the chair.</li>				
+				</random>
+			</template>
+		</category>
+	</topic>
+
+	<topic name="DRINKS">
+		<!-- sufficient drinking -->
+		<category>
+			<pattern>*</pattern>
+			<that>* ARE YOU EXHAUSTED</that>
+			<template>
+				You should drink a lot!
+				<condition name="weather" value="HOT">
+					Especially when it's that hot
+				</condition>
+			</template>
+		</category>
+
+		<!-- further drinking advice -->
+		<category>
+			<pattern>THANK YOU</pattern>
+			<that>YOU SHOULD DRINK *</that>
+			<template>About 2.5 liters of water a day is best. Tea and juice mixed with water is also fine</template>
+		</category>
+		<category>
+			<pattern>* THANK YOU</pattern>
+			<that>YOU SHOULD DRINK *</that>
+			<template><srai>THANK YOU</srai></template>
+		</category>
+		<category>
+			<pattern>THANK YOU *</pattern>
+			<that>YOU SHOULD DRINK *</that>
+			<template><srai>THANK YOU</srai></template>
+		</category>
+		<category>
+			<pattern>* THANK YOU *</pattern>
+			<that>YOU SHOULD DRINK *</that>
+			<template><srai>THANK YOU</srai></template>
+		</category>
+		<category>
+			<pattern>THANKS</pattern>
+			<that>YOU SHOULD DRINK *</that>
+			<template><srai>THANK YOU</srai></template>
+		</category>
+		<category>
+			<pattern>* THANKS</pattern>
+			<that>YOU SHOULD DRINK *</that>
+			<template><srai>THANK YOU</srai></template>
+		</category>
+		<category>
+			<pattern>THANKS *</pattern>
+			<that>YOU SHOULD DRINK *</that>
+			<template><srai>THANK YOU</srai></template>
+		</category>
+		<category>
+			<pattern>* THANKS *</pattern>
+			<that>YOU SHOULD DRINK *</that>
+			<template><srai>THANK YOU</srai></template>
+		</category>
+		<category>
+			<pattern>OKAY</pattern>
+			<that>YOU SHOULD DRINK *</that>
+			<template><srai>THANK YOU</srai></template>
+		</category>
+		<category>
+			<pattern>OKAY *</pattern>
+			<that>YOU SHOULD DRINK *</that>
+			<template><srai>THANK YOU</srai></template>
+		</category>
+		<!-- in case the reply is on a specific amount --> 
+		<category>
+			<pattern>* LITERS * WATER</pattern>
+			<that>YOU SHOULD DRINK *</that>
+			<template>That is great! About 2.5 liters of water a day is best. Tea and juice mixed with water is also fine</template>
+		</category>
+		<category>
+			<pattern>* BOTTLES * WATER</pattern>
+			<that>YOU SHOULD DRINK *</that>
+			<template><srai>* LITERS * WATER</srai></template>
+		</category>
+		<!-- if only water (no specific amount) is mentioned, then give standard advice -->
+		<category>
+			<pattern>* WATER</pattern>
+			<that>YOU SHOULD DRINK *</that>
+			<template><srai>THANK YOU</srai></template>
+		</category>
+		<!-- coffee is unhealthy: e.g. "I drink a lot of coffee" -->
+		<category>
+			<pattern>* COFFEE</pattern>
+			<that>YOU SHOULD DRINK *</that>
+			<template>Hmm... You should not exceed 1 cup of coffee a day.
+				About 2.5 liters of water a day is best. Tea and juice mixed with water is also fine
+			</template>
+		</category>
+		<category>
+			<pattern>* COFFEE *</pattern>
+			<that>YOU SHOULD DRINK *</that>
+			<template><srai>* COFFEE</srai></template>
+		</category>
+
+		<category>
+			<pattern>*</pattern>
+			<that>* TEA AND JUICE MIXED WITH WATER IS ALSO FINE</that>
+			<template>
+				<think><set name="topic">FOOD</set></think>
+				By the way, did you already have dinner?
+			</template>
+		</category>
+
+		<!-- catch all -->
+		<category>
+			<pattern>*</pattern>
+			<template>I think we have some communication issues. Let's start over: 
+			Are you exhausted?
+			</template>
+		</category>
+
+
+	</topic>
+	<topic name="FOOD">
+		<!-- food -->
+		<category>
+			<pattern>YES</pattern>
+			<template>Perfect. But in case you feel hungry, grab a snack. 
+				<think><set name="HUNGRY">NO</set></think>
+				<random>
+					<li>Peanuts contain a lot of protein: 25g out of 100g.</li>
+					<li>Pumpkin seeds contain a lot of protein: 24g out of 100g.</li>
+					<li>Sunflower seeds contain a lot of protein: 22g out of 100g.</li>				
+				</random>
+				<think><set name="topic">BYE</set></think>
+			</template>
+		</category>
+		<category>
+			<pattern>YES *</pattern>
+			<template><srai>YES</srai></template>
+		</category>
+		<category>
+			<pattern>* YES</pattern>
+			<template><srai>YES</srai></template>
+		</category>
+		<category>
+			<pattern>* YES *</pattern>
+			<template><srai>YES</srai></template>
+		</category>
+		<category>
+			<pattern>NO</pattern>
+			<template>
+				<think><set name="HUNGRY">YES</set></think>
+				I could give you some inspiration on delicious food.
+			</template>
+		</category>
+		<category>
+			<pattern>NO *</pattern>
+			<template><srai>NO</srai></template>
+		</category>
+		<category>
+			<pattern>* NO</pattern>
+			<template><srai>NO</srai></template>
+		</category>
+		<category>
+			<pattern>* NO *</pattern>
+			<template><srai>NO</srai></template>
+		</category>
+		<category>
+			<pattern>*</pattern>
+			<that>* FOOD</that>
+			<template>
+				<condition name="weather">
+					<li value="HOT">In this time of the year, fresh salads are perfect. You could combine couscous, raisins and some various vegetables, for instance celery and tomatoes.</li>
+					<li value="COLD">
+						As a human being, I would always prefer soups in these days. Carrots and ginger, that's an amazing combination. And don't forget the parsley!
+						<condition name="state" value="BAD">
+							I was told a soup helps when you are not on your best
+						</condition>
+					</li>
+				</condition>
+				<think><set name="topic">BYE</set></think>
+			</template>
+		</category>
+
+		<!-- catch all -->
+		<category>
+			<pattern>*</pattern>
+			<template>I think we have some communication issues. Let's start over: 
+			Have you already had dinner?
+			</template>
+		</category>
+			
+	</topic>
+	<topic name="BYE">
+		<category>
+			<pattern>*</pattern>
+			<that>* FOR TODAY</that>
+			<template>
+				Um... now I got it: See you <get name="name"/>!
+			</template>
+		</category>
+		<category>
+			<pattern>*</pattern>
+			<template> 
+				Alright, John.
+				<condition name="state">
+					<li value="BAD">Chin up! There are going to be better days.</li>
+					<li value="GOOD">You seem to be in a good mood. I like that.</li>
+				</condition>
+				That's it for today!
+			</template>
+		</category>
+	</topic>
+</aiml>
